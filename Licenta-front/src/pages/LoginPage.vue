@@ -35,7 +35,7 @@
           />
           <q-btn
             type="submit"
-            label="Inregistrare"
+            label="Autentificare"
             color="primary"
             class="q-mt-md q-ml-xl"
           />
