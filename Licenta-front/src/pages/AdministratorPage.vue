@@ -12,19 +12,38 @@
           </q-avatar>
           <q-card-section>
             <q-card-title class="text-h6">Administrator</q-card-title>
+            <q-card-title class="text-subtitle2">
+              Administrator page
+            </q-card-title>
           </q-card-section>
         </q-card-section>
 
         <q-separator />
 
-        <q-card-section class="row items-center justify-left">
-          <q-table title="Utilizatori" :rows="users" :columns="usersColumns" />
-        </q-card-section>
-        <q-card-section class="row items-center justify-left">
-          <q-table title="Comenzi" :rows="users" :columns="usersColumns" />
-        </q-card-section>
-        <q-card-section class="row items-center justify-left">
-          <q-table title="Produse" :rows="users" :columns="usersColumns" />
+        <q-card-section class="row items-center justify-center">
+          <q-list bordered separator>
+            <q-item
+              v-for="link in linksList"
+              :key="link.title"
+              clickable
+              v-ripple
+            >
+              <q-item-section avatar>
+                <q-icon :name="link.icon" />
+              </q-item-section>
+
+              <q-item-section>
+                <q-item-label>{{ link.title }}</q-item-label>
+                <q-item-label caption lines="2">
+                  {{ link.caption }}
+                </q-item-label>
+              </q-item-section>
+
+              <q-item-section side>
+                <essential-link :to="link.link" />
+              </q-item-section>
+            </q-item>
+          </q-list>
         </q-card-section>
       </q-card>
     </q-page>
@@ -32,47 +51,43 @@
 </template>
 
 <script>
-import { defineComponent, ref, onMounted } from 'vue';
-// import { api } from 'boot/axios';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'AdministratorPage',
   setup() {
-    const users = ref(null);
-    const usersColumns = [
-      { name: 'id' },
-      { name: 'nume' },
-      { name: 'prenume' },
-      { name: 'username' },
-      { name: 'email' },
-    ];
-    users.value = [
-      {
-        name: 'Frozen Yogurt',
-        calories: 159,
-        fat: 6.0,
-        carbs: 24,
-        protein: 4.0,
-        sodium: 87,
-        calcium: '14%',
-        iron: '1%',
-      },
-      {
-        name: 'Ice cream sandwich',
-        calories: 237,
-        fat: 9.0,
-        carbs: 37,
-        protein: 4.3,
-        sodium: 129,
-        calcium: '8%',
-        iron: '1%',
-      },
-    ];
-    onMounted(() => {
-      console.log('on mounted');
-      // users.value = api.get('/auth/listAllUsers');
-    });
-    return { users, usersColumns };
+    return {};
+  },
+
+  data() {
+    return {
+      linksList: [
+        {
+          title: 'Produse',
+          caption: 'Cele mai calitative produse',
+          link: '/products',
+          icon: 'school',
+        },
+        {
+          title: 'Categorii',
+          caption: 'Cele mai calitative categorii',
+          link: '/categories',
+          icon: 'school',
+        },
+        {
+          title: 'Utilizatori',
+          caption: 'Cele mai calitative utilizatori',
+          link: '/users',
+          icon: 'school',
+        },
+        {
+          title: 'Comenzi',
+          caption: 'Cele mai calitative comenzi',
+          link: '/orders',
+          icon: 'school',
+        },
+      ],
+    };
   },
 });
 </script>

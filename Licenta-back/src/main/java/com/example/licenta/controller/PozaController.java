@@ -36,7 +36,7 @@ public class PozaController {
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/poze/sterge-poza")
     ResponseEntity<String> stergePoza(@RequestParam Long id) {
-        pozaService.stergePoza(id);
+//        pozaService.stergePoza(id);
         return ResponseEntity.ok("Poza a fost stearsa cu succes!");
     }
 }

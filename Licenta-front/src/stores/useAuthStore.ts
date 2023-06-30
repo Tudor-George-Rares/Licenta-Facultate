@@ -12,11 +12,9 @@ export const useAuthStore = defineStore({
     prenume: null,
     roles: null,
     telefon: null,
-    accessToken: null,
-    tokenType: null,
   }),
   getters: {
-    isAuthenticated: (state) => !!state.accessToken,
+    isAuthenticated: (state) => !!state.username,
   },
   actions: {
     async login(username: string, password: string) {
@@ -34,8 +32,6 @@ export const useAuthStore = defineStore({
         this.prenume = response.data.prenume;
         this.roles = response.data.roles;
         this.telefon = response.data.telefon;
-        this.accessToken = response.data.accessToken;
-        this.tokenType = response.data.tokenType;
         return response;
       } catch (error) {
         console.error(error);
@@ -52,8 +48,6 @@ export const useAuthStore = defineStore({
         this.prenume = null;
         this.roles = null;
         this.telefon = null;
-        this.accessToken = null;
-        this.tokenType = null;
       } catch (error) {
         console.error(error);
       }

@@ -21,14 +21,6 @@ public class UserDetailsImpl implements UserDetails {
 
   private String email;
 
-  // private String telefon;
-
-  // private String nume;
-
-  // private String prenume;
-
-  // private String adresaCompleta;
-
   @JsonIgnore
   private String password;
 

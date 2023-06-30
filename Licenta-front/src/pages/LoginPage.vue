@@ -1,48 +1,28 @@
 <template>
-  <q-page class="flex flex-start justify-center q-pa-xl">
-    <q-card style="max-width: 800px; min-width: 400px; height: fit-content">
-      <q-card-section>
-        <q-toolbar>
-          <q-toolbar-title>Autentificare</q-toolbar-title>
-        </q-toolbar>
-      </q-card-section>
-      <q-card-section>
-        <q-form @submit="login">
-          <q-input
-            v-model="username"
-            label="Utilizator"
-            lazy-rules
-            :rules="[(val) => !!val || 'Utilizator-ul este necesar']"
-          />
-          <q-input
-            v-model="password"
-            label="Parola"
-            lazy-rules
-            :rules="[
-              (val) => !!val || 'Parola este necesara',
-              (val) =>
-                (val && val.length >= 8) ||
-                'Parola trebuie sa contina cel putin 8 caractere',
-            ]"
-            type="password"
-          />
-          <q-btn
-            label="Du-ma la inregistrare"
-            color="primary"
-            flat
-            class="q-mt-md"
-            @click="redirectRegister"
-          />
-          <q-btn
-            type="submit"
-            label="Inregistrare"
-            color="primary"
-            class="q-mt-md q-ml-xl"
-          />
-        </q-form>
-      </q-card-section>
-    </q-card>
-  </q-page>
+  <q-page-container>
+    <q-page>
+      <q-card class="q-ma-md" style="max-width: 400px; margin: auto">
+        <q-card-section>
+          <q-form @submit="login">
+            <q-input
+              v-model="username"
+              label="Username"
+              lazy-rules
+              :rules="[(val) => !!val || 'Username is required']"
+            />
+            <q-input
+              v-model="password"
+              label="Password"
+              lazy-rules
+              :rules="[(val) => !!val || 'Password is required']"
+              type="password"
+            />
+            <q-btn type="submit" label="Login" color="primary" />
+          </q-form>
+        </q-card-section>
+      </q-card>
+    </q-page>
+  </q-page-container>
 </template>
 
 <script>
@@ -66,13 +46,9 @@ export default defineComponent({
         console.error(error);
       }
     };
-    const redirectRegister = () => {
-      router.push('/register');
-    };
     return {
       username,
       password,
-      redirectRegister,
       login,
     };
   },

@@ -5,7 +5,6 @@ import {
   createWebHashHistory,
   createWebHistory,
 } from 'vue-router';
-import { useAuthStore } from 'stores/useAuthStore'; // actualizați cu calea către magazinul dvs. de autentificare
 
 import routes from './routes';
 
@@ -21,9 +20,7 @@ import routes from './routes';
 export default route(function (/* { store, ssrContext } */) {
   const createHistory = process.env.SERVER
     ? createMemoryHistory
-    : process.env.VUE_ROUTER_MODE === 'history'
-    ? createWebHistory
-    : createWebHashHistory;
+    : (process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory);
 
   const Router = createRouter({
     scrollBehavior: () => ({ left: 0, top: 0 }),
@@ -34,16 +31,6 @@ export default route(function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.VUE_ROUTER_BASE),
   });
-
-  // Router.beforeEach((to, from) => {
-  //   const authStore = useAuthStore(); // obțineți instanța magazinului de autentificare
-
-  //   // Verificați dacă ruta este publică sau dacă utilizatorul este autentificat
-  //   debugger;
-  //   if (!to.meta.isPublic) {
-  //     Router.push('/login');
-  //   }
-  // });
 
   return Router;
 });
