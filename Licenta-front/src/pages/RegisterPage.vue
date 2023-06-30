@@ -1,56 +1,73 @@
 <template>
-  <q-page class="flex flex-center">
-    <q-card class="q-ma-xl" style="max-width: 800px">
+  <q-page class="flex flex-start justify-center q-pa-xl">
+    <q-card style="max-width: 800px; min-width: 400px; height: fit-content">
+      <q-card-section>
+        <q-toolbar>
+          <q-toolbar-title>Inregistrare</q-toolbar-title>
+        </q-toolbar>
+      </q-card-section>
       <q-card-section>
         <q-form @submit="onSubmit">
           <q-input
             v-model="nume"
             label="Nume"
             lazy-rules
-            :rules="[(val) => !!val || 'Password is required']"
+            :rules="[(val) => !!val || 'Numele este necesar']"
           />
           <q-input
             v-model="prenume"
             label="Prenume"
             lazy-rules
-            :rules="[(val) => !!val || 'Password Confirmation is required']"
+            :rules="[(val) => !!val || 'Prenumele este necesar']"
           />
           <q-input
             v-model="email"
             label="Email"
             lazy-rules
-            :rules="[(val) => !!val || 'Email is required']"
+            :rules="[(val) => !!val || 'Email-ul este necesar']"
           />
           <q-input
             v-model="username"
-            label="Username"
+            label="Utilizator"
             lazy-rules
-            :rules="[(val) => !!val || 'Username is required']"
+            :rules="[(val) => !!val || 'Utilizator-ul este necesar']"
           />
           <q-input
             v-model="password"
-            label="Password"
+            label="Parola"
             lazy-rules
-            :rules="[(val) => !!val || 'Password is required']"
+            :rules="[
+              (val) => !!val || 'Parola este necesara',
+              (val) =>
+                (val && val.length >= 8) ||
+                'Parola trebuie sa contina cel putin 8 caractere',
+            ]"
           />
           <q-input
             v-model="adresa"
-            label="Address"
+            label="Adresa"
             lazy-rules
-            :rules="[(val) => !!val || 'Address is required']"
+            :rules="[(val) => !!val || 'Adresa este necesara']"
           />
           <q-input
             v-model="telefon"
             label="Telefon"
             lazy-rules
-            :rules="[(val) => !!val || 'Telefon is required']"
+            :rules="[(val) => !!val || 'Telefonul este necesar']"
           />
 
           <q-btn
-            type="submit"
-            label="Register"
+            label="Du-ma la autentificare"
             color="primary"
+            outline
             class="q-mt-md"
+            @click="redirectAuth"
+          />
+          <q-btn
+            type="submit"
+            label="Inregistrare"
+            color="primary"
+            class="q-mt-md q-ml-xl"
           />
         </q-form>
       </q-card-section>
@@ -92,6 +109,10 @@ export default defineComponent({
       }
     };
 
+    const redirectAuth = () => {
+      router.push('/login');
+    };
+
     return {
       email,
       password,
@@ -101,6 +122,7 @@ export default defineComponent({
       telefon,
       adresa,
       username,
+      redirectAuth,
     };
   },
 });
