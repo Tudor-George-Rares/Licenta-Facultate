@@ -41,12 +41,12 @@ public class PozaService {
             pozaRepository.save(poza);
         }
     }
-    public void stergePoza(Long request) {
-        Poza poza = (Poza) pozaRepository.findById(request.getClass()).orElse(null);
-        if (poza != null) {
-            pozaRepository.delete(poza);
-        }
-    }
+//    public void stergePoza(Long request) {
+//        Poza poza = (Poza) pozaRepository.findById(request.getClass()).orElse(null);
+//        if (poza != null) {
+//            pozaRepository.delete(poza);
+//        }
+//    }
 
     public void adaugaPoza() {
     }

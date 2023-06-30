@@ -43,10 +43,15 @@ public class User {
   public User() {
   }
 
-  public User(String username, String email, String password) {
+  public User(String username, String email, String password, String nume, String prenume, String telefon,
+      String adresaCompleta) {
     this.username = username;
     this.email = email;
     this.password = password;
+    this.nume = nume;
+    this.prenume = prenume;
+    this.telefon = telefon;
+    this.adresaCompleta = adresaCompleta;
   }
 
   public Long getId() {
@@ -81,43 +86,43 @@ public class User {
     this.password = password;
   }
 
-  public void setNume(String nume) {
-    this.nume = nume;
-  }
-
-  public String getNume() {
-    return nume;
-  }
-
-  public void setPrenume(String prenume) {
-    this.prenume = prenume;
-  }
-
-  public String getPrenume() {
-    return prenume;
-  }
-
-  public void setTelefon(String telefon) {
-    this.telefon = telefon;
-  }
-
-  public String getTelefon() {
-    return telefon;
-  }
-
-  public void setAdresaCompleta(String adresaCompleta) {
-    this.adresaCompleta = adresaCompleta;
-  }
-
-  public String getAdresaCompleta() {
-    return adresaCompleta;
-  }
-
   public Set<Role> getRoles() {
     return roles;
   }
 
   public void setRoles(Set<Role> roles) {
     this.roles = roles;
+  }
+
+  public String getNume() {
+    return nume;
+  }
+
+  public void setNume(String nume) {
+    this.nume = nume;
+  }
+
+  public String getPrenume() {
+    return prenume;
+  }
+
+  public void setPrenume(String prenume) {
+    this.prenume = prenume;
+  }
+
+  public String getTelefon() {
+    return telefon;
+  }
+
+  public void setTelefon(String telefon) {
+    this.telefon = telefon;
+  }
+
+  public String getAdresaCompleta() {
+    return adresaCompleta;
+  }
+
+  public void setAdresaCompleta(String adresaCompleta) {
+    this.adresaCompleta = adresaCompleta;
   }
 }

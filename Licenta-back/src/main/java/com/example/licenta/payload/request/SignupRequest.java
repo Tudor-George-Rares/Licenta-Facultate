@@ -20,9 +20,20 @@ public class SignupRequest {
     @Size(min = 6, max = 40)
     private String password;
 
+    @NotBlank
+    @Size(max = 50)
     private String nume;
+
+    @NotBlank
+    @Size(max = 50)
     private String prenume;
+
+    @NotBlank
+    @Size(max = 20)
     private String telefon;
+
+    @NotBlank
+    @Size(max = 120)
     private String adresaCompleta;
 
     public String getUsername() {
@@ -57,36 +68,36 @@ public class SignupRequest {
         this.role = role;
     }
 
+    public String getNume() {
+        return nume;
+    }
+
     public void setNume(String nume) {
         this.nume = nume;
     }
 
-    public String getNume() {
-        return this.nume;
+    public String getPrenume() {
+        return prenume;
     }
 
     public void setPrenume(String prenume) {
         this.prenume = prenume;
     }
 
-    public String getPrenume() {
-        return this.prenume;
+    public String getTelefon() {
+        return telefon;
     }
 
     public void setTelefon(String telefon) {
         this.telefon = telefon;
     }
 
-    public String getTelefon() {
-        return this.telefon;
+    public String getAdresaCompleta() {
+        return adresaCompleta;
     }
 
     public void setAdresaCompleta(String adresaCompleta) {
         this.adresaCompleta = adresaCompleta;
-    }
-
-    public String getAdresaCompleta() {
-        return this.adresaCompleta;
     }
 
 }
