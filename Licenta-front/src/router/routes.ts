@@ -5,12 +5,50 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') },
-      { path: '/login', component: () => import('pages/LoginPage.vue') },
-      { path: '/register', component: () => import('pages/RegisterPage.vue') },
+      {
+        path: '',
+        meta: {
+          isPublic: true,
+        },
+        component: () => import('pages/IndexPage.vue'),
+      },
+      {
+        path: '/login',
+        meta: {
+          isPublic: true,
+        },
+        component: () => import('pages/LoginPage.vue'),
+      },
+      {
+        path: '/register',
+        meta: {
+          isPublic: true,
+        },
+        component: () => import('pages/RegisterPage.vue'),
+      },
       { path: '/cart', component: () => import('pages/CartPage.vue') },
-      { path: '/product', component: () => import('pages/ProductPage.vue') },
-      { path: '/products', component: () => import('pages/ProductsPage.vue') },
+      {
+        path: '/product',
+        meta: {
+          isPublic: true,
+        },
+        component: () => import('pages/ProductPage.vue'),
+      },
+      {
+        path: '/products',
+        meta: {
+          isPublic: true,
+        },
+        component: () => import('pages/ProductsPage.vue'),
+      },
+      {
+        path: '/my-account',
+        component: () => import('pages/MyAccountPage.vue'),
+      },
+      {
+        path: '/admin',
+        component: () => import('pages/AdministratorPage.vue'),
+      },
     ],
   },
 
