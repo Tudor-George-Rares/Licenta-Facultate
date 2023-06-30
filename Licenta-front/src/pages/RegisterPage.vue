@@ -24,6 +24,7 @@
             v-model="email"
             label="Email"
             lazy-rules
+            type="email"
             :rules="[(val) => !!val || 'Email-ul este necesar']"
           />
           <q-input
@@ -36,6 +37,7 @@
             v-model="password"
             label="Parola"
             lazy-rules
+            type="password"
             :rules="[
               (val) => !!val || 'Parola este necesara',
               (val) =>
@@ -47,12 +49,14 @@
             v-model="adresa"
             label="Adresa"
             lazy-rules
+            type="address"
             :rules="[(val) => !!val || 'Adresa este necesara']"
           />
           <q-input
             v-model="telefon"
             label="Telefon"
             lazy-rules
+            type="tel"
             :rules="[(val) => !!val || 'Telefonul este necesar']"
           />
 
